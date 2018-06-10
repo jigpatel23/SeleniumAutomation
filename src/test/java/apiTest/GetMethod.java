@@ -4,10 +4,8 @@
 package apiTest;
 
 import java.util.ArrayList;
-
 import org.testng.Assert;
 import org.testng.annotations.*;
-
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -15,8 +13,10 @@ import io.restassured.specification.RequestSpecification;
 
 /**
  * @author Jignesh
+ *  API test using restAssured
  *
  */
+
 public class GetMethod {
 
 	public static RequestSpecification request = RestAssured.given();
@@ -25,15 +25,14 @@ public class GetMethod {
 	@BeforeTest
 	public void setUp() {
 
-		//RestAssured.baseURI = "http://restcountries.eu/rest/v1/";
-		 response = request.get("http://restcountries.eu/rest/v1/");
+		// RestAssured.baseURI = "http://restcountries.eu/rest/v1/";
+		response = request.get("http://restcountries.eu/rest/v1/");
 		// http://restapi.demoqa.com/utilities/weather/city/london
 	}
 
-	@Test//(enabled = false)
+	@Test // (enabled = false)
 	public void responseCode() {
 
-		
 		int statusCode = response.getStatusCode();
 		Assert.assertEquals(statusCode, 200);
 		System.out.println("Status code is: " + statusCode);
@@ -44,7 +43,6 @@ public class GetMethod {
 
 		// response = request.get("name/norway");
 
-		
 		JsonPath jsonPathEvaluator = response.jsonPath();
 		ArrayList<String> cityNames = jsonPathEvaluator.getJsonObject("name");
 		ArrayList<String> capitals = jsonPathEvaluator.getJsonObject("capital");

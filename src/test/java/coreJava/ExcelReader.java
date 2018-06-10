@@ -24,10 +24,10 @@ public class ExcelReader {
 			int rowCount = sheet.getLastRowNum();
 			System.out.println("the no of rows are : " + rowCount);
 			for (int row = 1; row <= rowCount; row++) {
-				String location = sheet.getRow(row).getCell(0).getStringCellValue();
-				String activity = sheet.getRow(row).getCell(1).getStringCellValue();
+				String ID = sheet.getRow(row).getCell(0).getStringCellValue();
+				String Password = sheet.getRow(row).getCell(1).getStringCellValue();
 
-				System.out.println(location + " , " + activity);
+				System.out.println(ID + " , " + Password);
 			}
 			ExcelReader er = new ExcelReader(sheet.getRow(1).getCell(0).getStringCellValue(),
 					sheet.getRow(1).getCell(1).getStringCellValue());
